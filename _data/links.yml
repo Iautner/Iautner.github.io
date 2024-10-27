@@ -1,0 +1,15 @@
+- text: YouTube
+  url: https://www.youtube.com/channel/UC_Ba9y5pTsyAiyoHLZzVTGA
+  icon: youtube
+- text: Discord
+  url: https://discord.gg/QuC8zcq
+  icon: discord
+- text: Twitch
+  url: https://www.twitch.tv/lautnergames
+  icon: twitch
+- text: TikTok
+  url: https://www.tiktok.com/@lautnergames
+  icon: tiktok
+- text: Instagram
+  url: https://www.instagram.com/lautnergames
+  icon: instagram
