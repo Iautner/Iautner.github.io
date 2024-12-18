@@ -13,3 +13,9 @@
 - text: Instagram
   url: https://www.instagram.com/lautnergames
   icon: instagram
+- text: Bluesky
+  url: https://bsky.app/profile/lautner.co
+  icon: bluesky
+- text: Twitter
+  url: https://twitter.com/LautnerGames
+  icon: twitter
