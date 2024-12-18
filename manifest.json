@@ -1,0 +1,14 @@
+{
+  "name": "Lautner",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "short_name": "Lautner",
+  "id": "Lautner",
+  "description": "Minecraft Content, Modded Minecraft, let’s play and challenge videos!",
+  "categories": [
+    "games",
+    "news",
+    "social",
+    "utilities"
+  ]
+}
