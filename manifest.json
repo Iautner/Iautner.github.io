@@ -1,14 +1,28 @@
 {
-  "name": "Lautner",
   "theme_color": "#000000",
   "background_color": "#000000",
+  "icons": [
+    {
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "icon512_maskable.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "512x512",
+      "src": "icon512_rounded.png",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "any",
+  "display": "standalone",
+  "dir": "auto",
+  "lang": "en-US",
+  "name": "Lautner",
   "short_name": "Lautner",
-  "id": "Lautner",
-  "description": "Minecraft Content, Modded Minecraft, let’s play and challenge videos!",
-  "categories": [
-    "games",
-    "news",
-    "social",
-    "utilities"
-  ]
+  "start_url": "https://lautner.co/",
+  "scope": "https://lautner.co/",
+  "id": "https://lautner.co/",
+  "description": "Minecraft Content, Modded Minecraft, let’s play and challenge videos!"
 }
