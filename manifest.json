@@ -37,8 +37,8 @@
   "lang": "en-US",
   "name": "Lautner",
   "short_name": "Lautner",
-  "start_url": "https://lautner.co/",
-  "scope": "https://lautner.co/",
-  "id": "https://lautner.co/",
+  "start_url": "https://lautner.co",
+  "scope": "https://lautner.co",
+  "id": "https://lautner.co",
   "description": "Minecraft Content, Modded Minecraft, let’s play and challenge videos!"
 }
