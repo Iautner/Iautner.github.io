@@ -1,4 +1,20 @@
 {
+"display_override": ["window-controls-overlay"], 
+"protocol_handlers": [{"protocol":"mailto","url":"/newEmail?to=%s"}],
+"shortcuts": [
+  {
+    "name": "Join Live Stream",
+    "short_name": "Live Stream",
+    "description": "Jump direction into a Lautner live stream",
+    "url": "https://www.twitch.tv/lautner",
+    "icons": [
+      {
+        "src": "https://raw.githubusercontent.com/Iautner/Iautner.github.io/refs/heads/main/icon512_rounded.png",
+        "sizes": "192x192"
+      }
+    ]
+  }
+], 
   "theme_color": "#000000",
   "background_color": "#000000",
   "icons": [
