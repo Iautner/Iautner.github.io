@@ -1,0 +1,43 @@
+{
+"protocol_handlers": [{"protocol":"","url":"/"}], 
+"name": "Lautner",
+"short_name": "Lautner",
+"start_url": "/",
+"display": "standalone",
+"description": "Lautner's links and socials, Fun Minecraft content, Modded Minecraft, let’s play and challenge videos!",
+"lang": " The default language of your application",
+"dir": "auto",
+"theme_color": "#000000",
+"background_color": "#000000",
+"orientation": "any",
+"icons": [
+    {
+        "src": "/manifest-icon-512.maskable.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "/manifest-icon-192.maskable.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any"
+    }
+],
+"screenshots": [
+    {
+        "src": "/Screenshot.png",
+        "sizes": "2880x1800",
+        "type": "image/png",
+        "description": "A screenshot of the home page"
+    }
+],
+"prefer_related_applications": false,
+"shortcuts": [
+    {
+        "name":"Shortcut",
+        "url":"/shortcut",
+        "description":"shortcut"
+    }
+]
+}
