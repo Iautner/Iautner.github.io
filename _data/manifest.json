@@ -1,4 +1,5 @@
 {
+"protocol_handlers": [{"protocol":"mailto","url":"/newEmail?to=%s"}], 
 "name": "Lautner",
 "short_name": "Lautner",
 "start_url": "/",
