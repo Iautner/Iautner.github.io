@@ -76,13 +76,8 @@
 </head>
 
 <body class="app-body">
-    <!-- App-like loading indicator -->
-    <div id="app-loader" class="app-loader">
-        <div class="loader-spinner"></div>
-    </div>
-    
     <!-- Main app container -->
-    <div id="app-container" class="app-container">
+    <div class="app-container">
         <main class="container-md main-content">
             <div class="content-wrapper">
                 {% include profile.html %}
@@ -96,25 +91,17 @@
     <!-- Enhanced scripts -->
     <script src="assets/js/lazy-load.js"></script>
     
-    <!-- App initialization -->
+    <!-- Minimal initialization -->
     <script>
-        // Hide loader when content is ready
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('app-loader').style.opacity = '0';
-                document.getElementById('app-container').style.opacity = '1';
-                setTimeout(() => {
-                    document.getElementById('app-loader').style.display = 'none';
-                }, 300);
-            }, 300);
-        });
-        
-        // Prevent zoom on double tap (iOS Safari)
+        // Prevent zoom on double tap (iOS Safari) but allow scrolling
         let lastTouchEnd = 0;
         document.addEventListener('touchend', event => {
             const now = (new Date()).getTime();
             if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
+                // Only prevent default for non-scrollable elements
+                if (!event.target.closest('.scrollable, main, body')) {
+                    event.preventDefault();
+                }
             }
             lastTouchEnd = now;
         }, false);
