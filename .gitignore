@@ -5,3 +5,5 @@ _site/
 .DS_Store
 Dockerfile
 /.vscode
+/.history
+/node_modules

@@ -5,26 +5,74 @@
     <meta charset="utf-8">
     <title>{{ site.data.metadata.title }}</title>
     <meta name="description" content="{{ site.data.metadata.description }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    
+    <!-- Enhanced viewport for modern devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    
+    <!-- PWA and mobile optimizations -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Lautner">
+    <meta name="application-name" content="Lautner">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    
+    <!-- Performance and SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    
+    <!-- Icons and manifest -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-
+    <link rel="apple-touch-icon" sizes="192x192" href="/manifest-icon-192.maskable.png">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Preload critical resources -->
     <link rel="preload" href="assets/css/primer.css" as="style">
     <link rel="preload" href="assets/css/custom.css" as="style">
-
+    <link rel="preload" href="assets/js/lazy-load.js" as="script">
+    
+    <!-- CSS with enhanced loading -->
     <link rel="stylesheet" href="assets/css/primer.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="assets/css/custom.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="assets/css/bootstrap-icons.css" media="print" onload="this.media='all'">
-
+    
     <noscript>
         <link rel="stylesheet" href="assets/css/primer.css">
         <link rel="stylesheet" href="assets/css/custom.css">
         <link rel="stylesheet" href="assets/css/bootstrap-icons.css">
     </noscript>
-    <meta property="og:image" content="https://lautner.co/assets/img/thumbnail-og.png">
+    
+    <!-- Enhanced Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     <meta property="og:title" content="Lautner's Links">
-<script>navigator.serviceWorker.register("service-worker.js")</script> 
-<link rel="manifest" href="/manifest.json" />    <meta property="og:description" content="Fun Minecraft content, modded Minecraft, let's play, and challenge videos!">
+    <meta property="og:description" content="Fun Minecraft content, modded Minecraft, let's play, and challenge videos!">
+    <meta property="og:image" content="{{ '/assets/img/thumbnail-og.png' | absolute_url }}">
+    <meta property="og:site_name" content="Lautner">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lautner's Links">
+    <meta name="twitter:description" content="Fun Minecraft content, modded Minecraft, let's play, and challenge videos!">
+    <meta name="twitter:image" content="{{ '/assets/img/thumbnail-og.png' | absolute_url }}">
+    
+    <!-- Enhanced Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
 </head>
 
 <body class="p-3">
@@ -34,7 +82,25 @@
         {% include links.html %}
         {% include footer.html %}
     </main>
-    <script src="assets/js/lazy-load.js" defer></script>
+    
+    <!-- Enhanced scripts -->
+    <script src="assets/js/lazy-load.js"></script>
+    
+    <!-- Minimal initialization -->
+    <script>
+        // Prevent zoom on double tap (iOS Safari) but allow scrolling
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', event => {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                // Only prevent default for non-scrollable elements
+                if (!event.target.closest('.scrollable, main, body')) {
+                    event.preventDefault();
+                }
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
 </body>
 
 </html>

@@ -1,60 +1,84 @@
 
-    // Based off of https://github.com/pwa-builder/PWABuilder/blob/main/docs/sw.js
+    // Enhanced Service Worker with modern PWA capabilities
+    // Optimized for app-like experience across all devices
 
-    /*
-      Welcome to our basic Service Worker! This Service Worker offers a basic offline experience
-      while also being easily customizeable. You can add in your own code to implement the capabilities
-      listed below, or change anything else you would like.
-
-
-      Need an introduction to Service Workers? Check our docs here: https://docs.pwabuilder.com/#/home/sw-intro
-      Want to learn more about how our Service Worker generation works? Check our docs here: https://docs.pwabuilder.com/#/studio/existing-app?id=add-a-service-worker
-
-      Did you know that Service Workers offer many more capabilities than just offline? 
-        - Background Sync: https://microsoft.github.io/win-student-devs/#/30DaysOfPWA/advanced-capabilities/06
-        - Periodic Background Sync: https://web.dev/periodic-background-sync/
-        - Push Notifications: https://microsoft.github.io/win-student-devs/#/30DaysOfPWA/advanced-capabilities/07?id=push-notifications-on-the-web
-        - Badges: https://microsoft.github.io/win-student-devs/#/30DaysOfPWA/advanced-capabilities/07?id=application-badges
-    */
-
+    const CACHE_NAME = 'lautner-app-v2.0';
+    const RUNTIME_CACHE = 'lautner-runtime-v2.0';
+    const OFFLINE_CACHE = 'lautner-offline-v2.0';
+    
     const HOSTNAME_WHITELIST = [
         self.location.hostname,
         'fonts.gstatic.com',
         'fonts.googleapis.com',
-        'cdn.jsdelivr.net'
-    ]
+        'cdn.jsdelivr.net',
+        'cdnjs.cloudflare.com',
+        'unpkg.com'
+    ];
+    
+    // Critical resources to cache immediately
+    const CRITICAL_RESOURCES = [
+        '/',
+        '/index.html',
+        '/assets/css/primer.css',
+        '/assets/css/custom.css',
+        '/assets/css/bootstrap-icons.css',
+        '/assets/js/lazy-load.js',
+        '/manifest.json'
+    ];
+    
+    // Install event - cache critical resources
+    self.addEventListener('install', event => {
+        event.waitUntil(
+            caches.open(CACHE_NAME)
+                .then(cache => {
+                    console.log('Caching critical resources');
+                    return cache.addAll(CRITICAL_RESOURCES);
+                })
+                .then(() => self.skipWaiting())
+        );
+    });
 
-    // The Util Function to hack URLs of intercepted requests
+    // Enhanced URL utility function for cache busting and protocol fixes
     const getFixedUrl = (req) => {
-        var now = Date.now()
-        var url = new URL(req.url)
+        const now = Date.now();
+        const url = new URL(req.url);
 
-        // 1. fixed http URL
-        // Just keep syncing with location.protocol
-        // fetch(httpURL) belongs to active mixed content.
-        // And fetch(httpRequest) is not supported yet.
-        url.protocol = self.location.protocol
+        // 1. Fixed http URL - sync with location.protocol
+        url.protocol = self.location.protocol;
 
-        // 2. add query for caching-busting.
-        // Github Pages served with Cache-Control: max-age=600
-        // max-age on mutable content is error-prone, with SW life of bugs can even extend.
-        // Until cache mode of Fetch API landed, we have to workaround cache-busting with query string.
-        // Cache-Control-Bug: https://bugs.chromium.org/p/chromium/issues/detail?id=453190
+        // 2. Add query for cache-busting (GitHub Pages specific)
         if (url.hostname === self.location.hostname) {
-            url.search += (url.search ? '&' : '?') + 'cache-bust=' + now
+            url.search += (url.search ? '&' : '?') + 'cache-bust=' + now;
         }
-        return url.href
-    }
+        
+        return url.href;
+    };
 
     /**
      *  @Lifecycle Activate
-     *  New one activated when old isnt being used.
-     *
-     *  waitUntil(): activating ====> activated
+     *  Clean up old caches and claim all clients
      */
     self.addEventListener('activate', event => {
-      event.waitUntil(self.clients.claim())
-    })
+        event.waitUntil(
+            Promise.all([
+                // Clean up old caches
+                caches.keys().then(cacheNames => {
+                    return Promise.all(
+                        cacheNames.map(cacheName => {
+                            if (cacheName !== CACHE_NAME && 
+                                cacheName !== RUNTIME_CACHE && 
+                                cacheName !== OFFLINE_CACHE) {
+                                console.log('Deleting old cache:', cacheName);
+                                return caches.delete(cacheName);
+                            }
+                        })
+                    );
+                }),
+                // Take control of all pages immediately
+                self.clients.claim()
+            ])
+        );
+    });
 
     /**
      *  @Functional Fetch
