@@ -114,27 +114,35 @@ svg {
     transition: var(--app-transition);
 }
 
+/* SVG icons in link cards */
+ul.list-style-none li a.link-card svg,
+ul li a.link-card svg,
 a.link-card svg,
-.link-card svg,
-a.Link--primary.link-card svg {
+.link-card svg {
     flex-shrink: 0 !important;
     width: 1.5rem !important;
     height: 1.5rem !important;
     min-width: 1.5rem !important;
     min-height: 1.5rem !important;
+    max-width: 1.5rem !important;
+    max-height: 1.5rem !important;
     transition: var(--app-transition) !important;
     color: var(--app-primary) !important;
     filter: drop-shadow(0 1px 2px var(--app-shadow)) !important;
     margin: 0 !important;
+    padding: 0 !important;
     display: block !important;
 }
 
+/* Text in link cards */
+ul.list-style-none li a.link-card .link-text,
+ul li a.link-card .link-text,
 a.link-card .link-text,
-.link-card .link-text,
-a.Link--primary.link-card .link-text {
+.link-card .link-text {
     flex: 1 !important;
     display: flex !important;
     align-items: center !important;
+    justify-content: center !important;
     font-size: 1rem !important;
     font-weight: 600 !important;
     color: var(--app-text-primary) !important;
@@ -142,39 +150,53 @@ a.Link--primary.link-card .link-text {
     margin: 0 !important;
     padding: 0 !important;
     white-space: nowrap !important;
+    text-align: center !important;
 }
 
-/* Link cards - Override all Primer styles */
+/* Link cards - Complete override with strongest selectors */
+ul.list-style-none li a.link-card,
+ul li a.link-card,
 a.link-card,
-.link-card,
-a.Link--primary.link-card {
-    transition: var(--app-transition) !important;
-    position: relative !important;
-    background: var(--app-glass-bg) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    border: 1px solid var(--app-glass-border) !important;
-    box-shadow: var(--app-elevation-1) !important;
-    text-decoration: none !important;
-    -webkit-tap-highlight-color: transparent !important;
-    height: auto !important;
-    min-height: 64px !important;
-    max-height: none !important;
-    width: 100% !important;
+.link-card {
+    /* Layout */
     display: flex !important;
+    flex-direction: row !important;
     align-items: center !important;
     justify-content: center !important;
-    flex-direction: row !important;
-    cursor: pointer !important;
+    
+    /* Sizing */
+    width: 100% !important;
+    min-height: 64px !important;
+    height: auto !important;
     padding: 1.25rem !important;
+    margin: 0 0 0.75rem 0 !important;
+    box-sizing: border-box !important;
+    
+    /* Spacing */
     gap: 1rem !important;
+    
+    /* Appearance */
+    background: var(--app-glass-bg) !important;
+    border: 1px solid var(--app-glass-border) !important;
+    border-radius: var(--app-radius) !important;
+    box-shadow: var(--app-elevation-1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    
+    /* Typography */
+    color: var(--app-text-primary) !important;
+    text-decoration: none !important;
     text-align: center !important;
     font-size: 1rem !important;
     font-weight: 600 !important;
-    color: var(--app-text-primary) !important;
-    border-radius: var(--app-radius) !important;
-    margin-bottom: 0.75rem !important;
-    box-sizing: border-box !important;
+    
+    /* Interaction */
+    cursor: pointer !important;
+    transition: var(--app-transition) !important;
+    -webkit-tap-highlight-color: transparent !important;
+    
+    /* Position */
+    position: relative !important;
 }
 
 @supports not (backdrop-filter: blur(10px)) {
@@ -211,64 +233,74 @@ a.Link--primary.link-card:active {
     transition: all 0.1s ease !important;
 }
 
-/* Responsive design - adjusted for Jekyll structure */
+/* Mobile and tablet responsive design */
 @media (max-width: 768px) {
-    .container-md {
-        padding: 1.5rem !important;
-        width: calc(100% - 1rem) !important;
-        border-radius: 16px !important;
-    }
-    
     body {
         padding: 0.5rem !important;
     }
     
+    .container-md {
+        padding: 1.5rem !important;
+        width: calc(100% - 1rem) !important;
+        border-radius: 16px !important;
+        margin: 0 auto !important;
+    }
+    
+    ul.list-style-none li a.link-card,
+    ul li a.link-card,
     a.link-card,
-    .link-card,
-    a.Link--primary.link-card {
+    .link-card {
         min-height: 56px !important;
         padding: 1rem !important;
         gap: 0.75rem !important;
         font-size: 0.9rem !important;
     }
     
+    ul.list-style-none li a.link-card svg,
+    ul li a.link-card svg,
     a.link-card svg,
-    .link-card svg,
-    a.Link--primary.link-card svg {
+    .link-card svg {
         width: 1.25rem !important;
         height: 1.25rem !important;
         min-width: 1.25rem !important;
         min-height: 1.25rem !important;
+        max-width: 1.25rem !important;
+        max-height: 1.25rem !important;
     }
 }
 
 @media (max-width: 480px) {
-    .container-md {
-        padding: 1rem !important;
-        width: calc(100% - 0.5rem) !important;
-        border-radius: 12px !important;
-    }
-    
     body {
         padding: 0.25rem !important;
     }
     
+    .container-md {
+        padding: 1rem !important;
+        width: calc(100% - 0.5rem) !important;
+        border-radius: 12px !important;
+        margin: 0 auto !important;
+    }
+    
+    ul.list-style-none li a.link-card,
+    ul li a.link-card,
     a.link-card,
-    .link-card,
-    a.Link--primary.link-card {
+    .link-card {
         min-height: 52px !important;
         padding: 0.875rem !important;
         gap: 0.75rem !important;
         font-size: 0.875rem !important;
     }
     
+    ul.list-style-none li a.link-card svg,
+    ul li a.link-card svg,
     a.link-card svg,
-    .link-card svg,
-    a.Link--primary.link-card svg {
+    .link-card svg {
         width: 1.125rem !important;
         height: 1.125rem !important;
         min-width: 1.125rem !important;
         min-height: 1.125rem !important;
+        max-width: 1.125rem !important;
+        max-height: 1.125rem !important;
     }
 }
 
