@@ -24,8 +24,8 @@
     --app-bg-secondary: #161b22;
     --app-border: rgba(240, 246, 252, 0.1);
     --app-shadow: rgba(0, 0, 0, 0.3);
-    --app-glass-bg: rgba(255, 255, 255, 0.05);
-    --app-glass-border: rgba(255, 255, 255, 0.1);
+    --app-glass-bg: rgba(22, 27, 34, 0.8);
+    --app-glass-border: rgba(240, 246, 252, 0.15);
     --app-text-primary: #f0f6fc;
     --app-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.12);
     --app-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.24);
@@ -39,8 +39,8 @@
         --app-bg-secondary: #161b22;
         --app-border: rgba(240, 246, 252, 0.1);
         --app-shadow: rgba(0, 0, 0, 0.3);
-        --app-glass-bg: rgba(255, 255, 255, 0.05);
-        --app-glass-border: rgba(255, 255, 255, 0.1);
+        --app-glass-bg: rgba(22, 27, 34, 0.8);
+        --app-glass-border: rgba(240, 246, 252, 0.15);
         --app-text-primary: #f0f6fc;
         --app-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.12);
         --app-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.24);
@@ -76,8 +76,10 @@ body {
 .container-md {
     max-width: 768px;
     margin: 0 auto;
-    width: 100%;
+    width: calc(100% - 2rem);
     position: relative;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /* Content wrapper - targets existing Jekyll structure */
@@ -93,7 +95,7 @@ body {
     position: relative;
     overflow: visible;
     animation: slideUp 0.6s var(--app-transition);
-    margin: 1rem;
+    margin: 1rem auto;
 }
 
 @supports not (backdrop-filter: blur(20px)) {
@@ -207,6 +209,46 @@ a:focus, button:focus {
 .keyboard-navigation *:focus {
     outline: 2px solid var(--app-primary) !important;
     outline-offset: 2px !important;
+}
+
+/* Footer spacing reduction */
+footer.my-6 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* Link card redesign - logo left, text right */
+.link-card {
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    gap: 0.75rem;
+}
+
+.link-card svg {
+    flex-shrink: 0;
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.link-card .link-text {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+/* Responsive adjustments for link cards */
+@media (max-width: 768px) {
+    .link-card {
+        gap: 0.5rem;
+    }
+    
+    .link-card svg {
+        width: 1.25em;
+        height: 1.25em;
+    }
 }
 
 /* Image loading */

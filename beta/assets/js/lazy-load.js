@@ -10,7 +10,7 @@ class LautnerApp {
         this.setupLazyLoading();
         this.setupNetworkStatus();
         this.setupAccessibility();
-        console.log('🚀 Lautner App initialized');
+        console.log('Lautner App initialized');
     }
     
     // Enhanced lazy loading
