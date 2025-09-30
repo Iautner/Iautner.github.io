@@ -65,7 +65,7 @@ body {
     background: linear-gradient(135deg, var(--app-bg-primary) 0%, var(--app-bg-secondary) 100%);
     color: var(--app-text-primary);
     margin: 0;
-    padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 0);
+    padding: 1rem;
     min-height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
@@ -86,8 +86,9 @@ body {
     box-shadow: var(--app-elevation-3) !important;
     overflow: visible;
     animation: slideUp 0.6s var(--app-transition);
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: calc(100% - 2rem);
 }
 
 @supports not (backdrop-filter: blur(20px)) {
@@ -162,12 +163,12 @@ a.Link--primary.link-card {
     width: 100% !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: flex-start !important;
+    justify-content: center !important;
     flex-direction: row !important;
     cursor: pointer !important;
-    padding: 1.25rem 1.5rem !important;
+    padding: 1.25rem !important;
     gap: 1rem !important;
-    text-align: left !important;
+    text-align: center !important;
     font-size: 1rem !important;
     font-weight: 600 !important;
     color: var(--app-text-primary) !important;
@@ -214,15 +215,19 @@ a.Link--primary.link-card:active {
 @media (max-width: 768px) {
     .container-md {
         padding: 1.5rem !important;
-        margin: 0.5rem !important;
+        width: calc(100% - 1rem) !important;
         border-radius: 16px !important;
+    }
+    
+    body {
+        padding: 0.5rem !important;
     }
     
     a.link-card,
     .link-card,
     a.Link--primary.link-card {
         min-height: 56px !important;
-        padding: 1rem 1.25rem !important;
+        padding: 1rem !important;
         gap: 0.75rem !important;
         font-size: 0.9rem !important;
     }
@@ -240,19 +245,19 @@ a.Link--primary.link-card:active {
 @media (max-width: 480px) {
     .container-md {
         padding: 1rem !important;
-        margin: 0.25rem !important;
+        width: calc(100% - 0.5rem) !important;
         border-radius: 12px !important;
     }
     
     body {
-        padding: 0.5rem 0 !important;
+        padding: 0.25rem !important;
     }
     
     a.link-card,
     .link-card,
     a.Link--primary.link-card {
         min-height: 52px !important;
-        padding: 0.875rem 1rem !important;
+        padding: 0.875rem !important;
         gap: 0.75rem !important;
         font-size: 0.875rem !important;
     }
