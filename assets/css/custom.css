@@ -32,8 +32,26 @@
     --app-elevation-3: 0 8px 24px rgba(0, 0, 0, 0.36);
 }
 
-@media (prefers-color-scheme: dark) {
+/* Light mode media query */
+@media (prefers-color-scheme: light) {
     :root {
+        --app-primary: #0366d6;
+        --app-bg-primary: #ffffff;
+        --app-bg-secondary: #f6f8fa;
+        --app-border: rgba(27, 31, 35, 0.15);
+        --app-shadow: rgba(27, 31, 35, 0.04);
+        --app-glass-bg: rgba(255, 255, 255, 0.9);
+        --app-glass-border: rgba(27, 31, 35, 0.15);
+        --app-text-primary: #24292e;
+        --app-elevation-1: 0 1px 3px rgba(27, 31, 35, 0.04);
+        --app-elevation-2: 0 4px 12px rgba(27, 31, 35, 0.08);
+        --app-elevation-3: 0 8px 24px rgba(27, 31, 35, 0.12);
+    }
+}
+
+/* Dark mode media query - only when no explicit mode is set */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-color-mode]) {
         --app-primary: #58a6ff;
         --app-bg-primary: #0d1117;
         --app-bg-secondary: #161b22;
@@ -51,6 +69,22 @@
 /* Base styles */
 * {
     box-sizing: border-box;
+}
+
+/* Explicit light mode support */
+[data-color-mode="light"],
+[data-color-mode="auto"][data-light-theme="light"] {
+    --app-primary: #0366d6;
+    --app-bg-primary: #ffffff;
+    --app-bg-secondary: #f6f8fa;
+    --app-border: rgba(27, 31, 35, 0.15);
+    --app-shadow: rgba(27, 31, 35, 0.04);
+    --app-glass-bg: rgba(255, 255, 255, 0.9);
+    --app-glass-border: rgba(27, 31, 35, 0.15);
+    --app-text-primary: #24292e;
+    --app-elevation-1: 0 1px 3px rgba(27, 31, 35, 0.04);
+    --app-elevation-2: 0 4px 12px rgba(27, 31, 35, 0.08);
+    --app-elevation-3: 0 8px 24px rgba(27, 31, 35, 0.12);
 }
 
 html {
