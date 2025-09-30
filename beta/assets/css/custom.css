@@ -119,10 +119,13 @@ a.Link--primary.link-card svg {
     flex-shrink: 0 !important;
     width: 1.5rem !important;
     height: 1.5rem !important;
+    min-width: 1.5rem !important;
+    min-height: 1.5rem !important;
     transition: var(--app-transition) !important;
     color: var(--app-primary) !important;
     filter: drop-shadow(0 1px 2px var(--app-shadow)) !important;
     margin: 0 !important;
+    display: block !important;
 }
 
 a.link-card .link-text,
@@ -135,6 +138,9 @@ a.Link--primary.link-card .link-text {
     font-weight: 600 !important;
     color: var(--app-text-primary) !important;
     line-height: 1.25 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
 }
 
 /* Link cards - Override all Primer styles */
@@ -150,13 +156,16 @@ a.Link--primary.link-card {
     box-shadow: var(--app-elevation-1) !important;
     text-decoration: none !important;
     -webkit-tap-highlight-color: transparent !important;
-    min-height: 60px !important;
+    height: auto !important;
+    min-height: 64px !important;
+    max-height: none !important;
+    width: 100% !important;
     display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
     flex-direction: row !important;
     cursor: pointer !important;
-    padding: 1rem !important;
+    padding: 1.25rem 1.5rem !important;
     gap: 1rem !important;
     text-align: left !important;
     font-size: 1rem !important;
@@ -164,6 +173,7 @@ a.Link--primary.link-card {
     color: var(--app-text-primary) !important;
     border-radius: var(--app-radius) !important;
     margin-bottom: 0.75rem !important;
+    box-sizing: border-box !important;
 }
 
 @supports not (backdrop-filter: blur(10px)) {
@@ -212,7 +222,7 @@ a.Link--primary.link-card:active {
     .link-card,
     a.Link--primary.link-card {
         min-height: 56px !important;
-        padding: 0.875rem !important;
+        padding: 1rem 1.25rem !important;
         gap: 0.75rem !important;
         font-size: 0.9rem !important;
     }
@@ -222,6 +232,8 @@ a.Link--primary.link-card:active {
     a.Link--primary.link-card svg {
         width: 1.25rem !important;
         height: 1.25rem !important;
+        min-width: 1.25rem !important;
+        min-height: 1.25rem !important;
     }
 }
 
@@ -240,8 +252,8 @@ a.Link--primary.link-card:active {
     .link-card,
     a.Link--primary.link-card {
         min-height: 52px !important;
-        padding: 0.75rem !important;
-        gap: 0.5rem !important;
+        padding: 0.875rem 1rem !important;
+        gap: 0.75rem !important;
         font-size: 0.875rem !important;
     }
     
@@ -250,6 +262,8 @@ a.Link--primary.link-card:active {
     a.Link--primary.link-card svg {
         width: 1.125rem !important;
         height: 1.125rem !important;
+        min-width: 1.125rem !important;
+        min-height: 1.125rem !important;
     }
 }
 
