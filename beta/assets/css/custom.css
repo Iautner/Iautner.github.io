@@ -120,12 +120,12 @@ ul li a.link-card svg,
 a.link-card svg,
 .link-card svg {
     flex-shrink: 0 !important;
-    width: 1.5rem !important;
-    height: 1.5rem !important;
-    min-width: 1.5rem !important;
-    min-height: 1.5rem !important;
-    max-width: 1.5rem !important;
-    max-height: 1.5rem !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    min-width: 2rem !important;
+    min-height: 2rem !important;
+    max-width: 2rem !important;
+    max-height: 2rem !important;
     transition: var(--app-transition) !important;
     color: var(--app-primary) !important;
     filter: drop-shadow(0 1px 2px var(--app-shadow)) !important;
@@ -142,15 +142,15 @@ a.link-card .link-text,
     flex: 1 !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
-    font-size: 1rem !important;
+    justify-content: flex-start !important;
+    font-size: 1.1rem !important;
     font-weight: 600 !important;
     color: var(--app-text-primary) !important;
-    line-height: 1.25 !important;
+    line-height: 1.3 !important;
     margin: 0 !important;
     padding: 0 !important;
     white-space: nowrap !important;
-    text-align: center !important;
+    text-align: left !important;
 }
 
 /* Link cards - Complete override with strongest selectors */
@@ -162,18 +162,18 @@ a.link-card,
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: flex-start !important;
     
     /* Sizing */
     width: 100% !important;
-    min-height: 64px !important;
+    min-height: 72px !important;
     height: auto !important;
-    padding: 1.25rem !important;
-    margin: 0 0 0.75rem 0 !important;
+    padding: 1.5rem !important;
+    margin: 0 0 1rem 0 !important;
     box-sizing: border-box !important;
     
     /* Spacing */
-    gap: 1rem !important;
+    gap: 1.25rem !important;
     
     /* Appearance */
     background: var(--app-glass-bg) !important;
@@ -186,8 +186,8 @@ a.link-card,
     /* Typography */
     color: var(--app-text-primary) !important;
     text-decoration: none !important;
-    text-align: center !important;
-    font-size: 1rem !important;
+    text-align: left !important;
+    font-size: 1.1rem !important;
     font-weight: 600 !important;
     
     /* Interaction */
@@ -236,12 +236,12 @@ a.Link--primary.link-card:active {
 /* Mobile and tablet responsive design */
 @media (max-width: 768px) {
     body {
-        padding: 0.5rem !important;
+        padding: 0.75rem !important;
     }
     
     .container-md {
-        padding: 1.5rem !important;
-        width: calc(100% - 1rem) !important;
+        padding: 1.75rem !important;
+        width: calc(100% - 1.5rem) !important;
         border-radius: 16px !important;
         margin: 0 auto !important;
     }
@@ -250,33 +250,33 @@ a.Link--primary.link-card:active {
     ul li a.link-card,
     a.link-card,
     .link-card {
-        min-height: 56px !important;
-        padding: 1rem !important;
-        gap: 0.75rem !important;
-        font-size: 0.9rem !important;
+        min-height: 68px !important;
+        padding: 1.25rem !important;
+        gap: 1rem !important;
+        font-size: 1rem !important;
     }
     
     ul.list-style-none li a.link-card svg,
     ul li a.link-card svg,
     a.link-card svg,
     .link-card svg {
-        width: 1.25rem !important;
-        height: 1.25rem !important;
-        min-width: 1.25rem !important;
-        min-height: 1.25rem !important;
-        max-width: 1.25rem !important;
-        max-height: 1.25rem !important;
+        width: 1.75rem !important;
+        height: 1.75rem !important;
+        min-width: 1.75rem !important;
+        min-height: 1.75rem !important;
+        max-width: 1.75rem !important;
+        max-height: 1.75rem !important;
     }
 }
 
 @media (max-width: 480px) {
     body {
-        padding: 0.25rem !important;
+        padding: 0.5rem !important;
     }
     
     .container-md {
-        padding: 1rem !important;
-        width: calc(100% - 0.5rem) !important;
+        padding: 1.5rem !important;
+        width: calc(100% - 1rem) !important;
         border-radius: 12px !important;
         margin: 0 auto !important;
     }
@@ -285,22 +285,29 @@ a.Link--primary.link-card:active {
     ul li a.link-card,
     a.link-card,
     .link-card {
-        min-height: 52px !important;
-        padding: 0.875rem !important;
-        gap: 0.75rem !important;
-        font-size: 0.875rem !important;
+        min-height: 64px !important;
+        padding: 1.125rem !important;
+        gap: 1rem !important;
+        font-size: 0.95rem !important;
     }
     
     ul.list-style-none li a.link-card svg,
     ul li a.link-card svg,
     a.link-card svg,
     .link-card svg {
-        width: 1.125rem !important;
-        height: 1.125rem !important;
-        min-width: 1.125rem !important;
-        min-height: 1.125rem !important;
-        max-width: 1.125rem !important;
-        max-height: 1.125rem !important;
+        width: 1.5rem !important;
+        height: 1.5rem !important;
+        min-width: 1.5rem !important;
+        min-height: 1.5rem !important;
+        max-width: 1.5rem !important;
+        max-height: 1.5rem !important;
+    }
+    
+    ul.list-style-none li a.link-card .link-text,
+    ul li a.link-card .link-text,
+    a.link-card .link-text,
+    .link-card .link-text {
+        font-size: 0.95rem !important;
     }
 }
 
