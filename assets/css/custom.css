@@ -6,8 +6,8 @@
     --app-bg-secondary: #f6f8fa;
     --app-border: rgba(27, 31, 35, 0.15);
     --app-shadow: rgba(27, 31, 35, 0.04);
-    --app-glass-bg: rgba(255, 255, 255, 0.8);
-    --app-glass-border: rgba(255, 255, 255, 0.3);
+    --app-glass-bg: rgba(255, 255, 255, 0.9);
+    --app-glass-border: rgba(27, 31, 35, 0.15);
     --app-text-primary: #24292e;
     --app-radius: 12px;
     --app-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -76,14 +76,10 @@ body {
 .container-md {
     max-width: 768px;
     margin: 0 auto;
-    width: calc(100% - 2rem);
     position: relative;
-    padding-left: 0;
-    padding-right: 0;
 }
 
 /* Content wrapper - targets existing Jekyll structure */
-.content-wrapper,
 .container-md {
     background: var(--app-glass-bg);
     backdrop-filter: blur(20px);
@@ -95,11 +91,11 @@ body {
     position: relative;
     overflow: visible;
     animation: slideUp 0.6s var(--app-transition);
-    margin: 1rem auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 @supports not (backdrop-filter: blur(20px)) {
-    .content-wrapper,
     .container-md {
         background: var(--app-bg-secondary);
         border: 1px solid var(--app-border);
@@ -117,12 +113,28 @@ body {
     }
 }
 
-/* SVG icons */
+/* SVG icons - general styles */
 svg {
-    width: 1.25em;
-    height: 1.25em;
     transition: var(--app-transition);
+}
+
+.link-card svg {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: var(--app-transition);
+    color: var(--app-primary);
     filter: drop-shadow(0 1px 2px var(--app-shadow));
+}
+
+.link-card .link-text {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--app-text-primary);
+    line-height: 1.25;
 }
 
 /* Link cards - NO TOUCH EFFECTS */
@@ -134,14 +146,20 @@ svg {
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--app-glass-border) !important;
     box-shadow: var(--app-elevation-1);
-    text-decoration: none;
+    text-decoration: none !important;
     -webkit-tap-highlight-color: transparent;
     min-height: 60px;
-    display: flex;
+    display: flex !important;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: flex-start !important;
+    flex-direction: row !important;
     cursor: pointer;
+    padding: 1rem !important;
+    gap: 1rem;
+    text-align: left !important;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--app-text-primary) !important;
 }
 
 /* Hover effects ONLY */
@@ -172,8 +190,15 @@ svg {
     }
     
     .link-card {
-        min-height: 64px;
-        padding: 1rem !important;
+        min-height: 56px;
+        padding: 0.875rem !important;
+        gap: 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .link-card svg {
+        width: 1.25rem;
+        height: 1.25rem;
     }
 }
 
@@ -186,6 +211,18 @@ svg {
     
     body {
         padding: 0.5rem 0;
+    }
+    
+    .link-card {
+        min-height: 52px;
+        padding: 0.75rem !important;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+    }
+    
+    .link-card svg {
+        width: 1.125rem;
+        height: 1.125rem;
     }
 }
 
@@ -215,40 +252,6 @@ a:focus, button:focus {
 footer.my-6 {
     margin-top: 1.5rem !important;
     margin-bottom: 1.5rem !important;
-}
-
-/* Link card redesign - logo left, text right */
-.link-card {
-    flex-direction: row !important;
-    justify-content: flex-start !important;
-    text-align: left !important;
-    gap: 0.75rem;
-}
-
-.link-card svg {
-    flex-shrink: 0;
-    margin-right: 0 !important;
-    margin-bottom: 0 !important;
-    width: 1.5em;
-    height: 1.5em;
-}
-
-.link-card .link-text {
-    flex: 1;
-    display: flex;
-    align-items: center;
-}
-
-/* Responsive adjustments for link cards */
-@media (max-width: 768px) {
-    .link-card {
-        gap: 0.5rem;
-    }
-    
-    .link-card svg {
-        width: 1.25em;
-        height: 1.25em;
-    }
 }
 
 /* Image loading */
