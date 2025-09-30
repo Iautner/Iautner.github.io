@@ -1,11 +1,11 @@
 <ul class="list-style-none f3 container-sm">
     {% for item in site.data.links %}
-    <li class="mb-3 text-center text-semibold">
+    <li class="mb-3 text-semibold">
         <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="Link--primary d-block p-3 border rounded-3 color-shadow-small color-bg-subtle link-card" aria-label="Open {{ item.text }} in new tab">
-            <svg class="bi mr-1" width="16" height="16" fill="currentColor">
+            <svg class="bi" width="16" height="16" fill="currentColor">
                 <use xlink:href="assets/img/bootstrap-icons.svg#{{ item.icon | default: 'globe2' }}"/>
-            </svg><br>
-            {{ item.text }}
+            </svg>
+            <span class="link-text">{{ item.text }}</span>
         </a>
     </li>
     {% endfor %}
