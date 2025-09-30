@@ -1,24 +1,25 @@
-/* Modern App-like CSS with Native Animations and Glass Effects */
+/* Enhanced Design System - Hierarchy, Harmony, Consistency */
 
-/* CSS Custom Properties for theming */
 :root {
     --app-primary: #0366d6;
-    --app-secondary: #586069;
     --app-bg-primary: #ffffff;
     --app-bg-secondary: #f6f8fa;
     --app-border: rgba(27, 31, 35, 0.15);
     --app-shadow: rgba(27, 31, 35, 0.04);
-    --app-glass-bg: rgba(255, 255, 255, 0.1);
-    --app-glass-border: rgba(255, 255, 255, 0.2);
+    --app-glass-bg: rgba(255, 255, 255, 0.8);
+    --app-glass-border: rgba(255, 255, 255, 0.3);
     --app-text-primary: #24292e;
-    --app-text-secondary: #586069;
     --app-radius: 12px;
     --app-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --app-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --app-elevation-1: 0 1px 3px rgba(27, 31, 35, 0.04);
+    --app-elevation-2: 0 4px 12px rgba(27, 31, 35, 0.08);
+    --app-elevation-3: 0 8px 24px rgba(27, 31, 35, 0.12);
 }
 
-/* Dark mode variables */
-[data-color-mode="dark"], [data-color-mode="auto"][data-light-theme="dark"] {
+/* Dark mode */
+[data-color-mode="dark"],
+[data-color-mode="auto"][data-dark-theme="dark"] {
+    --app-primary: #58a6ff;
     --app-bg-primary: #0d1117;
     --app-bg-secondary: #161b22;
     --app-border: rgba(240, 246, 252, 0.1);
@@ -26,10 +27,28 @@
     --app-glass-bg: rgba(255, 255, 255, 0.05);
     --app-glass-border: rgba(255, 255, 255, 0.1);
     --app-text-primary: #f0f6fc;
-    --app-text-secondary: #8b949e;
+    --app-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.12);
+    --app-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.24);
+    --app-elevation-3: 0 8px 24px rgba(0, 0, 0, 0.36);
 }
 
-/* Base styles with app-like feel */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --app-primary: #58a6ff;
+        --app-bg-primary: #0d1117;
+        --app-bg-secondary: #161b22;
+        --app-border: rgba(240, 246, 252, 0.1);
+        --app-shadow: rgba(0, 0, 0, 0.3);
+        --app-glass-bg: rgba(255, 255, 255, 0.05);
+        --app-glass-border: rgba(255, 255, 255, 0.1);
+        --app-text-primary: #f0f6fc;
+        --app-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.12);
+        --app-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.24);
+        --app-elevation-3: 0 8px 24px rgba(0, 0, 0, 0.36);
+    }
+}
+
+/* Base styles */
 * {
     box-sizing: border-box;
 }
@@ -37,8 +56,7 @@
 html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
+    height: 100%;
 }
 
 body {
@@ -49,55 +67,31 @@ body {
     padding: 0;
     min-height: 100vh;
     overflow-x: hidden;
-    position: relative;
-}
-
-/* App loader */
-.app-loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--app-bg-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    transition: opacity 0.3s ease;
-}
-
-.loader-spinner {
-    width: 40px;
-    height: 40px;
-    border: 3px solid var(--app-border);
-    border-top: 3px solid var(--app-primary);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* App container */
 .app-container {
-    opacity: 0;
-    transition: opacity 0.3s ease;
     min-height: 100vh;
+    width: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .app-body {
-    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 0);
     background: linear-gradient(135deg, var(--app-bg-primary) 0%, var(--app-bg-secondary) 100%);
+    min-height: 100vh;
 }
 
-/* Main content with glass effect */
+/* Main content */
 .main-content {
     padding: 1rem;
     max-width: 768px;
     margin: 0 auto;
+    width: 100%;
+    position: relative;
 }
 
 .content-wrapper {
@@ -107,13 +101,12 @@ body {
     border: 1px solid var(--app-glass-border);
     border-radius: var(--app-radius);
     padding: 2rem;
-    box-shadow: 0 8px 32px var(--app-shadow);
+    box-shadow: var(--app-elevation-3);
     position: relative;
-    overflow: hidden;
-    animation: slideUp 0.6s var(--app-bounce);
+    overflow: visible;
+    animation: slideUp 0.6s var(--app-transition);
 }
 
-/* Fallback for browsers without backdrop-filter */
 @supports not (backdrop-filter: blur(20px)) {
     .content-wrapper {
         background: var(--app-bg-secondary);
@@ -132,7 +125,7 @@ body {
     }
 }
 
-/* Enhanced SVG icons */
+/* SVG icons */
 svg {
     width: 1.25em;
     height: 1.25em;
@@ -140,76 +133,45 @@ svg {
     filter: drop-shadow(0 1px 2px var(--app-shadow));
 }
 
-/* Button and link enhancements */
-a, button {
+/* Link cards - NO TOUCH EFFECTS */
+.link-card {
     transition: var(--app-transition);
     position: relative;
-    overflow: hidden;
+    background: var(--app-glass-bg) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--app-glass-border) !important;
+    box-shadow: var(--app-elevation-1);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
 }
 
-a:hover, button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px var(--app-shadow);
+/* Hover effects ONLY */
+@media (hover: hover) and (pointer: fine) {
+    .link-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--app-elevation-2);
+        border-color: var(--app-primary) !important;
+    }
+    
+    .link-card:hover svg {
+        transform: scale(1.1);
+        color: var(--app-primary);
+    }
 }
 
-a:active, button:active {
+.link-card:active {
     transform: translateY(0);
     transition: all 0.1s ease;
 }
 
-/* Touch feedback for mobile */
-.touch-feedback {
-    position: relative;
-    cursor: pointer;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.touch-feedback::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.3s, height 0.3s;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.touch-feedback:active::before {
-    width: 200px;
-    height: 200px;
-}
-
-/* Card-like elements */
-.card {
-    background: var(--app-glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--app-glass-border);
-    border-radius: var(--app-radius);
-    padding: 1.5rem;
-    margin: 1rem 0;
-    box-shadow: 0 4px 16px var(--app-shadow);
-    transition: var(--app-transition);
-    animation: fadeIn 0.5s ease;
-}
-
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px var(--app-shadow);
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-/* Responsive design for all screen sizes */
+/* Responsive design */
 @media (max-width: 768px) {
     .content-wrapper {
         padding: 1.5rem;
@@ -219,15 +181,13 @@ a:active, button:active {
     
     .main-content {
         padding: 0.5rem;
+        height: auto;
+        overflow: visible;
     }
     
-    /* Enhanced touch targets for mobile */
-    a, button {
-        min-height: 44px;
-        min-width: 44px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+    .link-card {
+        min-height: 64px;
+        padding: 1rem !important;
     }
 }
 
@@ -239,92 +199,45 @@ a:active, button:active {
     }
     
     .app-body {
-        padding: 0;
+        padding: 0.5rem 0;
     }
 }
 
-/* High-resolution displays */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    svg {
-        filter: drop-shadow(0 0.5px 1px var(--app-shadow));
-    }
-}
-
-/* Landscape orientation adjustments */
-@media (orientation: landscape) and (max-height: 600px) {
-    .content-wrapper {
-        padding: 1rem;
-    }
-}
-
-/* Dark mode specific enhancements */
-@media (prefers-color-scheme: dark) {
-    .loader-spinner {
-        filter: drop-shadow(0 0 4px var(--app-primary));
-    }
-    
-    .content-wrapper {
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    }
-}
-
-/* Reduced motion for accessibility */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-    
-    .content-wrapper {
-        animation: none;
-    }
-}
-
-/* Focus styles for accessibility */
+/* Focus styles */
 a:focus, button:focus {
     outline: 2px solid var(--app-primary);
     outline-offset: 2px;
     border-radius: 4px;
 }
 
-/* Print styles */
-@media print {
-    .app-loader, .touch-feedback::before {
-        display: none !important;
-    }
-    
-    .content-wrapper {
-        background: white !important;
-        box-shadow: none !important;
-        border: 1px solid #ccc !important;
-    }
-}
-
-/* Performance optimizations */
-.content-wrapper {
-    will-change: transform;
-    contain: layout style paint;
-}
-
-/* iOS specific fixes */
+/* iOS support */
 @supports (-webkit-touch-callout: none) {
     .app-body {
         padding-top: max(env(safe-area-inset-top), 20px);
         padding-bottom: max(env(safe-area-inset-bottom), 20px);
     }
     
-    /* Fix for iOS bounce scrolling */
     body {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
+        -webkit-overflow-scrolling: touch;
     }
     
     .app-container {
-        overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
+}
+
+/* Keyboard navigation */
+.keyboard-navigation *:focus {
+    outline: 2px solid var(--app-primary) !important;
+    outline-offset: 2px !important;
+}
+
+/* Image loading */
+.loaded {
+    animation: imageLoad 0.3s ease;
+}
+
+@keyframes imageLoad {
+    from { opacity: 0; transform: scale(1.02); }
+    to { opacity: 1; transform: scale(1); }
 }

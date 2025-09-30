@@ -76,13 +76,8 @@
 </head>
 
 <body class="app-body">
-    <!-- App-like loading indicator -->
-    <div id="app-loader" class="app-loader">
-        <div class="loader-spinner"></div>
-    </div>
-    
     <!-- Main app container -->
-    <div id="app-container" class="app-container">
+    <div class="app-container">
         <main class="container-md main-content">
             <div class="content-wrapper">
                 <header class="text-center">
@@ -111,7 +106,7 @@
                 <ul class="list-style-none f3 container-sm">
     
     <li class="mb-3 text-center text-semibold">
-        <a href="https://www.youtube.com/channel/UC_Ba9y5pTsyAiyoHLZzVTGA" class="Link--primary d-block p-3 border rounded-3 color-shadow-small color-bg-subtle">
+        <a href="https://www.youtube.com/channel/UC_Ba9y5pTsyAiyoHLZzVTGA" target="_blank" rel="noopener noreferrer" class="Link--primary d-block p-3 border rounded-3 color-shadow-small color-bg-subtle link-card" aria-label="Open YouTube in new tab">
             <svg class="bi mr-1" width="16" height="16" fill="currentColor">
                 <use xlink:href="assets/img/bootstrap-icons.svg#youtube"/>
             </svg><br>
@@ -120,7 +115,7 @@
     </li>
     
     <li class="mb-3 text-center text-semibold">
-        <a href="https://discord.gg/QuC8zcq" class="Link--primary d-block p-3 border rounded-3 color-shadow-small color-bg-subtle">
+        <a href="https://discord.gg/QuC8zcq" target="_blank" rel="noopener noreferrer" class="Link--primary d-block p-3 border rounded-3 color-shadow-small color-bg-subtle link-card" aria-label="Open Discord in new tab">
             <svg class="bi mr-1" width="16" height="16" fill="currentColor">
                 <use xlink:href="assets/img/bootstrap-icons.svg#discord"/>
             </svg><br>
@@ -129,7 +124,7 @@
     </li>
     
     <li class="mb-3 text-center text-semibold">
-        <a href="https://www.twitch.tv/lautnergames" class="Link--primary d-block p-3 border rounded-3 color-shadow-small color-bg-subtle">
+        <a href="https://www.twitch.tv/lautnergames" target="_blank" rel="noopener noreferrer" class="Link--primary d-block p-3 border rounded-3 color-shadow-small color-bg-subtle link-card" aria-label="Open Twitch in new tab">
             <svg class="bi mr-1" width="16" height="16" fill="currentColor">
                 <use xlink:href="assets/img/bootstrap-icons.svg#twitch"/>
             </svg><br>
@@ -138,7 +133,7 @@
     </li>
     
     <li class="mb-3 text-center text-semibold">
-        <a href="https://www.tiktok.com/@lautnergames" class="Link--primary d-block p-3 border rounded-3 color-shadow-small color-bg-subtle">
+        <a href="https://www.tiktok.com/@lautnergames" target="_blank" rel="noopener noreferrer" class="Link--primary d-block p-3 border rounded-3 color-shadow-small color-bg-subtle link-card" aria-label="Open TikTok in new tab">
             <svg class="bi mr-1" width="16" height="16" fill="currentColor">
                 <use xlink:href="assets/img/bootstrap-icons.svg#tiktok"/>
             </svg><br>
@@ -147,7 +142,7 @@
     </li>
     
     <li class="mb-3 text-center text-semibold">
-        <a href="https://www.instagram.com/lautnergames" class="Link--primary d-block p-3 border rounded-3 color-shadow-small color-bg-subtle">
+        <a href="https://www.instagram.com/lautnergames" target="_blank" rel="noopener noreferrer" class="Link--primary d-block p-3 border rounded-3 color-shadow-small color-bg-subtle link-card" aria-label="Open Instagram in new tab">
             <svg class="bi mr-1" width="16" height="16" fill="currentColor">
                 <use xlink:href="assets/img/bootstrap-icons.svg#instagram"/>
             </svg><br>
@@ -156,7 +151,7 @@
     </li>
     
     <li class="mb-3 text-center text-semibold">
-        <a href="https://bsky.app/profile/lautner.co" class="Link--primary d-block p-3 border rounded-3 color-shadow-small color-bg-subtle">
+        <a href="https://bsky.app/profile/lautner.co" target="_blank" rel="noopener noreferrer" class="Link--primary d-block p-3 border rounded-3 color-shadow-small color-bg-subtle link-card" aria-label="Open Bluesky in new tab">
             <svg class="bi mr-1" width="16" height="16" fill="currentColor">
                 <use xlink:href="assets/img/bootstrap-icons.svg#bluesky"/>
             </svg><br>
@@ -165,7 +160,7 @@
     </li>
     
     <li class="mb-3 text-center text-semibold">
-        <a href="https://twitter.com/LautnerGames" class="Link--primary d-block p-3 border rounded-3 color-shadow-small color-bg-subtle">
+        <a href="https://twitter.com/LautnerGames" target="_blank" rel="noopener noreferrer" class="Link--primary d-block p-3 border rounded-3 color-shadow-small color-bg-subtle link-card" aria-label="Open Twitter in new tab">
             <svg class="bi mr-1" width="16" height="16" fill="currentColor">
                 <use xlink:href="assets/img/bootstrap-icons.svg#twitter"/>
             </svg><br>
@@ -175,7 +170,7 @@
     
 </ul>
                 <footer class="text-center my-6">
-    <p class="f4-mktg color-fg-muted"> <a href="https://github.com/Iautner/Iautner.github.io" class="">View on Github</a></p>
+    <p class="f4-mktg color-fg-muted">© 2025 Lautner</p>
 </footer>
             </div>
         </main>
@@ -184,25 +179,17 @@
     <!-- Enhanced scripts -->
     <script src="assets/js/lazy-load.js"></script>
     
-    <!-- App initialization -->
+    <!-- Minimal initialization -->
     <script>
-        // Hide loader when content is ready
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('app-loader').style.opacity = '0';
-                document.getElementById('app-container').style.opacity = '1';
-                setTimeout(() => {
-                    document.getElementById('app-loader').style.display = 'none';
-                }, 300);
-            }, 300);
-        });
-        
-        // Prevent zoom on double tap (iOS Safari)
+        // Prevent zoom on double tap (iOS Safari) but allow scrolling
         let lastTouchEnd = 0;
         document.addEventListener('touchend', event => {
             const now = (new Date()).getTime();
             if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
+                // Only prevent default for non-scrollable elements
+                if (!event.target.closest('.scrollable, main, body')) {
+                    event.preventDefault();
+                }
             }
             lastTouchEnd = now;
         }, false);
