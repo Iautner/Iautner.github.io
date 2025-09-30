@@ -75,18 +75,13 @@
     </script>
 </head>
 
-<body class="app-body">
-    <!-- Main app container -->
-    <div class="app-container">
-        <main class="container-md main-content">
-            <div class="content-wrapper">
-                {% include profile.html %}
-                {% include interests.html %}
-                {% include links.html %}
-                {% include footer.html %}
-            </div>
-        </main>
-    </div>
+<body class="p-3">
+    <main class="container-md">
+        {% include profile.html %}
+        {% include interests.html %}
+        {% include links.html %}
+        {% include footer.html %}
+    </main>
     
     <!-- Enhanced scripts -->
     <script src="assets/js/lazy-load.js"></script>
