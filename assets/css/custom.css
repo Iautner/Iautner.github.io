@@ -194,9 +194,7 @@ ul.list-style-none li a.link-card .link-text,
 ul li a.link-card .link-text,
 a.link-card .link-text,
 .link-card .link-text {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    display: block !important;
     font-size: 1.1rem !important;
     font-weight: 600 !important;
     color: var(--app-text-primary) !important;
@@ -205,8 +203,6 @@ a.link-card .link-text,
     padding: 0 !important;
     white-space: nowrap !important;
     text-align: center !important;
-    width: 100% !important;
-    flex: 1 !important;
 }
 
 /* Link cards - Complete override with strongest selectors */
@@ -229,7 +225,7 @@ a.link-card,
     box-sizing: border-box !important;
     
     /* Spacing */
-    gap: 1.25rem !important;
+    gap: 1rem !important;
     
     /* Appearance */
     background: var(--app-glass-bg) !important;
@@ -303,7 +299,7 @@ a.Link--primary.link-card:active {
         min-height: 68px !important;
         padding: 1.25rem !important;
         font-size: 1rem !important;
-        gap: 1rem !important;
+        gap: 0.875rem !important;
     }
     
     ul.list-style-none li a.link-card svg,
@@ -345,7 +341,7 @@ a.Link--primary.link-card:active {
         min-height: 64px !important;
         padding: 1.125rem !important;
         font-size: 0.95rem !important;
-        gap: 1rem !important;
+        gap: 0.75rem !important;
     }
     
     ul.list-style-none li a.link-card svg,
