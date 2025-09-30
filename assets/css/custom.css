@@ -1,68 +1,78 @@
 /* Enhanced Design System - Hierarchy, Harmony, Consistency */
 
 :root {
-    --app-primary: #0366d6;
-    --app-bg-primary: #ffffff;
-    --app-bg-secondary: #f6f8fa;
-    --app-border: rgba(27, 31, 35, 0.15);
-    --app-shadow: rgba(27, 31, 35, 0.04);
-    --app-glass-bg: rgba(255, 255, 255, 0.9);
-    --app-glass-border: rgba(27, 31, 35, 0.15);
-    --app-text-primary: #24292e;
+    /* Semantic colors following Apple's guidelines */
+    --app-primary: #007AFF;
+    --app-bg-primary: #FFFFFF;
+    --app-bg-secondary: #F2F2F7;
+    --app-bg-tertiary: #FFFFFF;
+    --app-border: rgba(60, 60, 67, 0.29);
+    --app-shadow: rgba(0, 0, 0, 0.04);
+    --app-glass-bg: rgba(255, 255, 255, 0.8);
+    --app-glass-border: rgba(0, 0, 0, 0.04);
+    --app-text-primary: #000000;
+    --app-text-secondary: rgba(60, 60, 67, 0.6);
     --app-radius: 12px;
     --app-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --app-elevation-1: 0 1px 3px rgba(27, 31, 35, 0.04);
-    --app-elevation-2: 0 4px 12px rgba(27, 31, 35, 0.08);
-    --app-elevation-3: 0 8px 24px rgba(27, 31, 35, 0.12);
+    --app-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --app-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --app-elevation-3: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 /* Dark mode */
 [data-color-mode="dark"],
 [data-color-mode="auto"][data-dark-theme="dark"] {
-    --app-primary: #58a6ff;
-    --app-bg-primary: #0d1117;
-    --app-bg-secondary: #161b22;
-    --app-border: rgba(240, 246, 252, 0.1);
+    /* Semantic dark colors following Apple's guidelines */
+    --app-primary: #0A84FF;
+    --app-bg-primary: #000000;
+    --app-bg-secondary: #1C1C1E;
+    --app-bg-tertiary: #2C2C2E;
+    --app-border: rgba(84, 84, 88, 0.6);
     --app-shadow: rgba(0, 0, 0, 0.3);
-    --app-glass-bg: rgba(22, 27, 34, 0.8);
-    --app-glass-border: rgba(240, 246, 252, 0.15);
-    --app-text-primary: #f0f6fc;
-    --app-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.12);
-    --app-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.24);
-    --app-elevation-3: 0 8px 24px rgba(0, 0, 0, 0.36);
+    --app-glass-bg: rgba(28, 28, 30, 0.8);
+    --app-glass-border: rgba(84, 84, 88, 0.6);
+    --app-text-primary: #FFFFFF;
+    --app-text-secondary: rgba(235, 235, 245, 0.6);
+    --app-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --app-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --app-elevation-3: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 /* Light mode media query */
 @media (prefers-color-scheme: light) {
     :root {
-        --app-primary: #0366d6;
-        --app-bg-primary: #ffffff;
-        --app-bg-secondary: #f6f8fa;
-        --app-border: rgba(27, 31, 35, 0.15);
-        --app-shadow: rgba(27, 31, 35, 0.04);
-        --app-glass-bg: rgba(255, 255, 255, 0.9);
-        --app-glass-border: rgba(27, 31, 35, 0.15);
-        --app-text-primary: #24292e;
-        --app-elevation-1: 0 1px 3px rgba(27, 31, 35, 0.04);
-        --app-elevation-2: 0 4px 12px rgba(27, 31, 35, 0.08);
-        --app-elevation-3: 0 8px 24px rgba(27, 31, 35, 0.12);
+        --app-primary: #007AFF;
+        --app-bg-primary: #FFFFFF;
+        --app-bg-secondary: #F2F2F7;
+        --app-bg-tertiary: #FFFFFF;
+        --app-border: rgba(60, 60, 67, 0.29);
+        --app-shadow: rgba(0, 0, 0, 0.04);
+        --app-glass-bg: rgba(255, 255, 255, 0.8);
+        --app-glass-border: rgba(0, 0, 0, 0.04);
+        --app-text-primary: #000000;
+        --app-text-secondary: rgba(60, 60, 67, 0.6);
+        --app-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --app-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.15);
+        --app-elevation-3: 0 8px 24px rgba(0, 0, 0, 0.2);
     }
 }
 
 /* Dark mode media query - only when no explicit mode is set */
 @media (prefers-color-scheme: dark) {
     :root:not([data-color-mode]) {
-        --app-primary: #58a6ff;
-        --app-bg-primary: #0d1117;
-        --app-bg-secondary: #161b22;
-        --app-border: rgba(240, 246, 252, 0.1);
+        --app-primary: #0A84FF;
+        --app-bg-primary: #000000;
+        --app-bg-secondary: #1C1C1E;
+        --app-bg-tertiary: #2C2C2E;
+        --app-border: rgba(84, 84, 88, 0.6);
         --app-shadow: rgba(0, 0, 0, 0.3);
-        --app-glass-bg: rgba(22, 27, 34, 0.8);
-        --app-glass-border: rgba(240, 246, 252, 0.15);
-        --app-text-primary: #f0f6fc;
-        --app-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.12);
-        --app-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.24);
-        --app-elevation-3: 0 8px 24px rgba(0, 0, 0, 0.36);
+        --app-glass-bg: rgba(28, 28, 30, 0.8);
+        --app-glass-border: rgba(84, 84, 88, 0.6);
+        --app-text-primary: #FFFFFF;
+        --app-text-secondary: rgba(235, 235, 245, 0.6);
+        --app-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.2);
+        --app-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.3);
+        --app-elevation-3: 0 8px 24px rgba(0, 0, 0, 0.4);
     }
 }
 
@@ -74,17 +84,19 @@
 /* Explicit light mode support */
 [data-color-mode="light"],
 [data-color-mode="auto"][data-light-theme="light"] {
-    --app-primary: #0366d6;
-    --app-bg-primary: #ffffff;
-    --app-bg-secondary: #f6f8fa;
-    --app-border: rgba(27, 31, 35, 0.15);
-    --app-shadow: rgba(27, 31, 35, 0.04);
-    --app-glass-bg: rgba(255, 255, 255, 0.9);
-    --app-glass-border: rgba(27, 31, 35, 0.15);
-    --app-text-primary: #24292e;
-    --app-elevation-1: 0 1px 3px rgba(27, 31, 35, 0.04);
-    --app-elevation-2: 0 4px 12px rgba(27, 31, 35, 0.08);
-    --app-elevation-3: 0 8px 24px rgba(27, 31, 35, 0.12);
+    --app-primary: #007AFF;
+    --app-bg-primary: #FFFFFF;
+    --app-bg-secondary: #F2F2F7;
+    --app-bg-tertiary: #FFFFFF;
+    --app-border: rgba(60, 60, 67, 0.29);
+    --app-shadow: rgba(0, 0, 0, 0.04);
+    --app-glass-bg: rgba(255, 255, 255, 0.8);
+    --app-glass-border: rgba(0, 0, 0, 0.04);
+    --app-text-primary: #000000;
+    --app-text-secondary: rgba(60, 60, 67, 0.6);
+    --app-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --app-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --app-elevation-3: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 html {
@@ -193,18 +205,7 @@ a.link-card[href*="twitch"] svg {
 }
 
 a.link-card[href*="tiktok"] svg {
-    color: #000000 !important;
-}
-
-[data-color-mode="dark"] a.link-card[href*="tiktok"] svg,
-[data-color-mode="auto"][data-dark-theme="dark"] a.link-card[href*="tiktok"] svg {
-    color: #FFFFFF !important;
-}
-
-@media (prefers-color-scheme: dark) {
-    a.link-card[href*="tiktok"] svg {
-        color: #FFFFFF !important;
-    }
+    color: #FF0050 !important;
 }
 
 a.link-card[href*="instagram"] svg {
