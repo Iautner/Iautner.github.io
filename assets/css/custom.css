@@ -21,7 +21,9 @@
 
 /* Dark mode */
 [data-color-mode="dark"],
-[data-color-mode="auto"][data-dark-theme="dark"] {
+[data-color-mode="auto"][data-dark-theme="dark"],
+body[data-color-mode="dark"],
+html[data-color-mode="dark"] {
     /* Semantic dark colors following Apple's guidelines */
     --app-primary: #0A84FF;
     --app-bg-primary: #000000;
@@ -38,43 +40,40 @@
     --app-elevation-3: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-/* Light mode media query */
-@media (prefers-color-scheme: light) {
-    html[data-color-mode="auto"],
-    :root:not([data-color-mode]) {
-        --app-primary: #007AFF;
-        --app-bg-primary: #FFFFFF;
-        --app-bg-secondary: #F2F2F7;
-        --app-bg-tertiary: #FFFFFF;
-        --app-border: rgba(60, 60, 67, 0.29);
-        --app-shadow: rgba(0, 0, 0, 0.04);
-        --app-glass-bg: rgba(255, 255, 255, 0.8);
-        --app-glass-border: rgba(0, 0, 0, 0.04);
-        --app-text-primary: #000000;
-        --app-text-secondary: rgba(60, 60, 67, 0.6);
-        --app-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.1);
-        --app-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.15);
-        --app-elevation-3: 0 8px 24px rgba(0, 0, 0, 0.2);
+/* Auto mode with system preferences */
+@media (prefers-color-scheme: dark) {
+    html[data-color-mode="auto"] {
+        --app-primary: #0A84FF !important;
+        --app-bg-primary: #000000 !important;
+        --app-bg-secondary: #1C1C1E !important;
+        --app-bg-tertiary: #2C2C2E !important;
+        --app-border: rgba(84, 84, 88, 0.6) !important;
+        --app-shadow: rgba(0, 0, 0, 0.3) !important;
+        --app-glass-bg: rgba(28, 28, 30, 0.8) !important;
+        --app-glass-border: rgba(84, 84, 88, 0.6) !important;
+        --app-text-primary: #FFFFFF !important;
+        --app-text-secondary: rgba(235, 235, 245, 0.6) !important;
+        --app-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+        --app-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+        --app-elevation-3: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
     }
 }
 
-/* Dark mode media query - works with auto mode and system preference */
-@media (prefers-color-scheme: dark) {
-    html[data-color-mode="auto"],
-    :root:not([data-color-mode]) {
-        --app-primary: #0A84FF;
-        --app-bg-primary: #000000;
-        --app-bg-secondary: #1C1C1E;
-        --app-bg-tertiary: #2C2C2E;
-        --app-border: rgba(84, 84, 88, 0.6);
-        --app-shadow: rgba(0, 0, 0, 0.3);
-        --app-glass-bg: rgba(28, 28, 30, 0.8);
-        --app-glass-border: rgba(84, 84, 88, 0.6);
-        --app-text-primary: #FFFFFF;
-        --app-text-secondary: rgba(235, 235, 245, 0.6);
-        --app-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.2);
-        --app-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.3);
-        --app-elevation-3: 0 8px 24px rgba(0, 0, 0, 0.4);
+@media (prefers-color-scheme: light) {
+    html[data-color-mode="auto"] {
+        --app-primary: #007AFF !important;
+        --app-bg-primary: #FFFFFF !important;
+        --app-bg-secondary: #F2F2F7 !important;
+        --app-bg-tertiary: #FFFFFF !important;
+        --app-border: rgba(60, 60, 67, 0.29) !important;
+        --app-shadow: rgba(0, 0, 0, 0.04) !important;
+        --app-glass-bg: rgba(255, 255, 255, 0.8) !important;
+        --app-glass-border: rgba(0, 0, 0, 0.04) !important;
+        --app-text-primary: #000000 !important;
+        --app-text-secondary: rgba(60, 60, 67, 0.6) !important;
+        --app-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+        --app-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        --app-elevation-3: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
     }
 }
 
@@ -85,7 +84,9 @@
 
 /* Explicit light mode support */
 [data-color-mode="light"],
-[data-color-mode="auto"][data-light-theme="light"] {
+[data-color-mode="auto"][data-light-theme="light"],
+body[data-color-mode="light"],
+html[data-color-mode="light"] {
     --app-primary: #007AFF;
     --app-bg-primary: #FFFFFF;
     --app-bg-secondary: #F2F2F7;
