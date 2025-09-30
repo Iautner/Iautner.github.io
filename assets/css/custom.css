@@ -77,18 +77,13 @@ body {
     max-width: 768px;
     margin: 0 auto;
     position: relative;
-}
-
-/* Content wrapper - targets existing Jekyll structure */
-.container-md {
-    background: var(--app-glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--app-glass-border);
-    border-radius: var(--app-radius);
-    padding: 2rem;
-    box-shadow: var(--app-elevation-3);
-    position: relative;
+    background: var(--app-glass-bg) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid var(--app-glass-border) !important;
+    border-radius: var(--app-radius) !important;
+    padding: 2rem !important;
+    box-shadow: var(--app-elevation-3) !important;
     overflow: visible;
     animation: slideUp 0.6s var(--app-transition);
     margin-top: 1rem;
@@ -97,8 +92,8 @@ body {
 
 @supports not (backdrop-filter: blur(20px)) {
     .container-md {
-        background: var(--app-bg-secondary);
-        border: 1px solid var(--app-border);
+        background: var(--app-bg-secondary) !important;
+        border: 1px solid var(--app-border) !important;
     }
 }
 
@@ -118,111 +113,143 @@ svg {
     transition: var(--app-transition);
 }
 
-.link-card svg {
-    flex-shrink: 0;
-    width: 1.5rem;
-    height: 1.5rem;
-    transition: var(--app-transition);
-    color: var(--app-primary);
-    filter: drop-shadow(0 1px 2px var(--app-shadow));
+a.link-card svg,
+.link-card svg,
+a.Link--primary.link-card svg {
+    flex-shrink: 0 !important;
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    transition: var(--app-transition) !important;
+    color: var(--app-primary) !important;
+    filter: drop-shadow(0 1px 2px var(--app-shadow)) !important;
+    margin: 0 !important;
 }
 
-.link-card .link-text {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--app-text-primary);
-    line-height: 1.25;
-}
-
-/* Link cards - NO TOUCH EFFECTS */
-.link-card {
-    transition: var(--app-transition);
-    position: relative;
-    background: var(--app-glass-bg) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--app-glass-border) !important;
-    box-shadow: var(--app-elevation-1);
-    text-decoration: none !important;
-    -webkit-tap-highlight-color: transparent;
-    min-height: 60px;
+a.link-card .link-text,
+.link-card .link-text,
+a.Link--primary.link-card .link-text {
+    flex: 1 !important;
     display: flex !important;
-    align-items: center;
+    align-items: center !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: var(--app-text-primary) !important;
+    line-height: 1.25 !important;
+}
+
+/* Link cards - Override all Primer styles */
+a.link-card,
+.link-card,
+a.Link--primary.link-card {
+    transition: var(--app-transition) !important;
+    position: relative !important;
+    background: var(--app-glass-bg) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid var(--app-glass-border) !important;
+    box-shadow: var(--app-elevation-1) !important;
+    text-decoration: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    min-height: 60px !important;
+    display: flex !important;
+    align-items: center !important;
     justify-content: flex-start !important;
     flex-direction: row !important;
-    cursor: pointer;
+    cursor: pointer !important;
     padding: 1rem !important;
-    gap: 1rem;
+    gap: 1rem !important;
     text-align: left !important;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
     color: var(--app-text-primary) !important;
+    border-radius: var(--app-radius) !important;
+    margin-bottom: 0.75rem !important;
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+    a.link-card,
+    .link-card,
+    a.Link--primary.link-card {
+        background: var(--app-bg-secondary) !important;
+        border: 1px solid var(--app-border) !important;
+    }
 }
 
 /* Hover effects ONLY */
 @media (hover: hover) and (pointer: fine) {
-    .link-card:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--app-elevation-2);
+    a.link-card:hover,
+    .link-card:hover,
+    a.Link--primary.link-card:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: var(--app-elevation-2) !important;
         border-color: var(--app-primary) !important;
     }
     
-    .link-card:hover svg {
-        transform: scale(1.1);
-        color: var(--app-primary);
+    a.link-card:hover svg,
+    .link-card:hover svg,
+    a.Link--primary.link-card:hover svg {
+        transform: scale(1.1) !important;
+        color: var(--app-primary) !important;
     }
 }
 
-.link-card:active {
-    transform: translateY(0);
-    transition: all 0.1s ease;
+a.link-card:active,
+.link-card:active,
+a.Link--primary.link-card:active {
+    transform: translateY(0) !important;
+    transition: all 0.1s ease !important;
 }
 
 /* Responsive design - adjusted for Jekyll structure */
 @media (max-width: 768px) {
     .container-md {
-        padding: 1.5rem;
-        margin: 0.5rem;
-        border-radius: 16px;
+        padding: 1.5rem !important;
+        margin: 0.5rem !important;
+        border-radius: 16px !important;
     }
     
-    .link-card {
-        min-height: 56px;
+    a.link-card,
+    .link-card,
+    a.Link--primary.link-card {
+        min-height: 56px !important;
         padding: 0.875rem !important;
-        gap: 0.75rem;
-        font-size: 0.9rem;
+        gap: 0.75rem !important;
+        font-size: 0.9rem !important;
     }
     
-    .link-card svg {
-        width: 1.25rem;
-        height: 1.25rem;
+    a.link-card svg,
+    .link-card svg,
+    a.Link--primary.link-card svg {
+        width: 1.25rem !important;
+        height: 1.25rem !important;
     }
 }
 
 @media (max-width: 480px) {
     .container-md {
-        padding: 1rem;
-        margin: 0.25rem;
-        border-radius: 12px;
+        padding: 1rem !important;
+        margin: 0.25rem !important;
+        border-radius: 12px !important;
     }
     
     body {
-        padding: 0.5rem 0;
+        padding: 0.5rem 0 !important;
     }
     
-    .link-card {
-        min-height: 52px;
+    a.link-card,
+    .link-card,
+    a.Link--primary.link-card {
+        min-height: 52px !important;
         padding: 0.75rem !important;
-        gap: 0.5rem;
-        font-size: 0.875rem;
+        gap: 0.5rem !important;
+        font-size: 0.875rem !important;
     }
     
-    .link-card svg {
-        width: 1.125rem;
-        height: 1.125rem;
+    a.link-card svg,
+    .link-card svg,
+    a.Link--primary.link-card svg {
+        width: 1.125rem !important;
+        height: 1.125rem !important;
     }
 }
 

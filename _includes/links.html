@@ -1,7 +1,7 @@
-<ul class="list-style-none f3 container-sm">
+<ul class="list-style-none container-sm">
     {% for item in site.data.links %}
-    <li class="mb-3 text-semibold">
-        <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="Link--primary d-block p-3 border rounded-3 color-shadow-small color-bg-subtle link-card" aria-label="Open {{ item.text }} in new tab">
+    <li>
+        <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="link-card" aria-label="Open {{ item.text }} in new tab">
             <svg class="bi" width="16" height="16" fill="currentColor">
                 <use xlink:href="assets/img/bootstrap-icons.svg#{{ item.icon | default: 'globe2' }}"/>
             </svg>
