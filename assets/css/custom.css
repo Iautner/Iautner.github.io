@@ -40,7 +40,8 @@
 
 /* Light mode media query */
 @media (prefers-color-scheme: light) {
-    :root {
+    html[data-color-mode="auto"],
+    :root:not([data-color-mode]) {
         --app-primary: #007AFF;
         --app-bg-primary: #FFFFFF;
         --app-bg-secondary: #F2F2F7;
@@ -57,8 +58,9 @@
     }
 }
 
-/* Dark mode media query - only when no explicit mode is set */
+/* Dark mode media query - works with auto mode and system preference */
 @media (prefers-color-scheme: dark) {
+    html[data-color-mode="auto"],
     :root:not([data-color-mode]) {
         --app-primary: #0A84FF;
         --app-bg-primary: #000000;
