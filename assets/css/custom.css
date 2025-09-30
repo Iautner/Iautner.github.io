@@ -1,6 +1,330 @@
-/* Add CSS rules to override Primer */
+/* Modern App-like CSS with Native Animations and Glass Effects */
 
+/* CSS Custom Properties for theming */
+:root {
+    --app-primary: #0366d6;
+    --app-secondary: #586069;
+    --app-bg-primary: #ffffff;
+    --app-bg-secondary: #f6f8fa;
+    --app-border: rgba(27, 31, 35, 0.15);
+    --app-shadow: rgba(27, 31, 35, 0.04);
+    --app-glass-bg: rgba(255, 255, 255, 0.1);
+    --app-glass-border: rgba(255, 255, 255, 0.2);
+    --app-text-primary: #24292e;
+    --app-text-secondary: #586069;
+    --app-radius: 12px;
+    --app-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --app-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Dark mode variables */
+[data-color-mode="dark"], [data-color-mode="auto"][data-light-theme="dark"] {
+    --app-bg-primary: #0d1117;
+    --app-bg-secondary: #161b22;
+    --app-border: rgba(240, 246, 252, 0.1);
+    --app-shadow: rgba(0, 0, 0, 0.3);
+    --app-glass-bg: rgba(255, 255, 255, 0.05);
+    --app-glass-border: rgba(255, 255, 255, 0.1);
+    --app-text-primary: #f0f6fc;
+    --app-text-secondary: #8b949e;
+}
+
+/* Base styles with app-like feel */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+    background: var(--app-bg-primary);
+    color: var(--app-text-primary);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* App loader */
+.app-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--app-bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+}
+
+.loader-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--app-border);
+    border-top: 3px solid var(--app-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* App container */
+.app-container {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    min-height: 100vh;
+}
+
+.app-body {
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    background: linear-gradient(135deg, var(--app-bg-primary) 0%, var(--app-bg-secondary) 100%);
+}
+
+/* Main content with glass effect */
+.main-content {
+    padding: 1rem;
+    max-width: 768px;
+    margin: 0 auto;
+}
+
+.content-wrapper {
+    background: var(--app-glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--app-glass-border);
+    border-radius: var(--app-radius);
+    padding: 2rem;
+    box-shadow: 0 8px 32px var(--app-shadow);
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.6s var(--app-bounce);
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(20px)) {
+    .content-wrapper {
+        background: var(--app-bg-secondary);
+        border: 1px solid var(--app-border);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced SVG icons */
 svg {
     width: 1.25em;
     height: 1.25em;
+    transition: var(--app-transition);
+    filter: drop-shadow(0 1px 2px var(--app-shadow));
+}
+
+/* Button and link enhancements */
+a, button {
+    transition: var(--app-transition);
+    position: relative;
+    overflow: hidden;
+}
+
+a:hover, button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--app-shadow);
+}
+
+a:active, button:active {
+    transform: translateY(0);
+    transition: all 0.1s ease;
+}
+
+/* Touch feedback for mobile */
+.touch-feedback {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.touch-feedback::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.touch-feedback:active::before {
+    width: 200px;
+    height: 200px;
+}
+
+/* Card-like elements */
+.card {
+    background: var(--app-glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--app-glass-border);
+    border-radius: var(--app-radius);
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: 0 4px 16px var(--app-shadow);
+    transition: var(--app-transition);
+    animation: fadeIn 0.5s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--app-shadow);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive design for all screen sizes */
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 1.5rem;
+        margin: 0.5rem;
+        border-radius: 16px;
+    }
+    
+    .main-content {
+        padding: 0.5rem;
+    }
+    
+    /* Enhanced touch targets for mobile */
+    a, button {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-wrapper {
+        padding: 1rem;
+        margin: 0.25rem;
+        border-radius: 12px;
+    }
+    
+    .app-body {
+        padding: 0;
+    }
+}
+
+/* High-resolution displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    svg {
+        filter: drop-shadow(0 0.5px 1px var(--app-shadow));
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+    .content-wrapper {
+        padding: 1rem;
+    }
+}
+
+/* Dark mode specific enhancements */
+@media (prefers-color-scheme: dark) {
+    .loader-spinner {
+        filter: drop-shadow(0 0 4px var(--app-primary));
+    }
+    
+    .content-wrapper {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .content-wrapper {
+        animation: none;
+    }
+}
+
+/* Focus styles for accessibility */
+a:focus, button:focus {
+    outline: 2px solid var(--app-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Print styles */
+@media print {
+    .app-loader, .touch-feedback::before {
+        display: none !important;
+    }
+    
+    .content-wrapper {
+        background: white !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+}
+
+/* Performance optimizations */
+.content-wrapper {
+    will-change: transform;
+    contain: layout style paint;
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+    .app-body {
+        padding-top: max(env(safe-area-inset-top), 20px);
+        padding-bottom: max(env(safe-area-inset-bottom), 20px);
+    }
+    
+    /* Fix for iOS bounce scrolling */
+    body {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    .app-container {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 }
