@@ -127,13 +127,58 @@ a.link-card svg,
     max-width: 2rem !important;
     max-height: 2rem !important;
     transition: var(--app-transition) !important;
-    color: var(--app-primary) !important;
     filter: drop-shadow(0 1px 2px var(--app-shadow)) !important;
-    margin: 0 !important;
+    margin: 0 1.25rem 0 0 !important;
     padding: 0 !important;
     display: block !important;
+    position: absolute !important;
+    left: 1.5rem !important;
 }
 
+/* Brand-specific colors for social media logos */
+a.link-card[href*="youtube"] svg {
+    color: #FF0000 !important;
+}
+
+a.link-card[href*="discord"] svg {
+    color: #5865F2 !important;
+}
+
+a.link-card[href*="twitch"] svg {
+    color: #9146FF !important;
+}
+
+a.link-card[href*="tiktok"] svg {
+    color: #000000 !important;
+}
+
+[data-color-mode="dark"] a.link-card[href*="tiktok"] svg,
+[data-color-mode="auto"][data-dark-theme="dark"] a.link-card[href*="tiktok"] svg {
+    color: #FFFFFF !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    a.link-card[href*="tiktok"] svg {
+        color: #FFFFFF !important;
+    }
+}
+
+a.link-card[href*="instagram"] svg {
+    color: #E4405F !important;
+}
+
+a.link-card[href*="bluesky"] svg {
+    color: #0085FF !important;
+}
+
+a.link-card[href*="twitter"] svg {
+    color: #1DA1F2 !important;
+}
+
+/* Default fallback color */
+a.link-card svg {
+    color: var(--app-primary) !important;
+}
 /* Text in link cards */
 ul.list-style-none li a.link-card .link-text,
 ul li a.link-card .link-text,
@@ -141,15 +186,16 @@ a.link-card .link-text,
 .link-card .link-text {
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: flex-start !important;
     font-size: 1.1rem !important;
     font-weight: 600 !important;
     color: var(--app-text-primary) !important;
     line-height: 1.3 !important;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 0 0 0 4.75rem !important;
     white-space: nowrap !important;
-    text-align: center !important;
+    text-align: left !important;
+    width: 100% !important;
 }
 
 /* Link cards - Complete override with strongest selectors */
@@ -161,7 +207,7 @@ a.link-card,
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: flex-start !important;
     
     /* Sizing */
     width: 100% !important;
@@ -172,7 +218,7 @@ a.link-card,
     box-sizing: border-box !important;
     
     /* Spacing */
-    gap: 1.25rem !important;
+    gap: 0 !important;
     
     /* Appearance */
     background: var(--app-glass-bg) !important;
@@ -185,7 +231,7 @@ a.link-card,
     /* Typography */
     color: var(--app-text-primary) !important;
     text-decoration: none !important;
-    text-align: center !important;
+    text-align: left !important;
     font-size: 1.1rem !important;
     font-weight: 600 !important;
     
@@ -251,7 +297,6 @@ a.Link--primary.link-card:active {
     .link-card {
         min-height: 68px !important;
         padding: 1.25rem !important;
-        gap: 1rem !important;
         font-size: 1rem !important;
     }
     
@@ -265,6 +310,15 @@ a.Link--primary.link-card:active {
         min-height: 1.75rem !important;
         max-width: 1.75rem !important;
         max-height: 1.75rem !important;
+        left: 1.25rem !important;
+    }
+    
+    ul.list-style-none li a.link-card .link-text,
+    ul li a.link-card .link-text,
+    a.link-card .link-text,
+    .link-card .link-text {
+        padding: 0 0 0 4rem !important;
+        font-size: 1rem !important;
     }
 }
 
@@ -286,7 +340,6 @@ a.Link--primary.link-card:active {
     .link-card {
         min-height: 64px !important;
         padding: 1.125rem !important;
-        gap: 1rem !important;
         font-size: 0.95rem !important;
     }
     
@@ -300,6 +353,7 @@ a.Link--primary.link-card:active {
         min-height: 1.5rem !important;
         max-width: 1.5rem !important;
         max-height: 1.5rem !important;
+        left: 1.125rem !important;
     }
     
     ul.list-style-none li a.link-card .link-text,
@@ -307,6 +361,7 @@ a.Link--primary.link-card:active {
     a.link-card .link-text,
     .link-card .link-text {
         font-size: 0.95rem !important;
+        padding: 0 0 0 3.625rem !important;
     }
 }
 
