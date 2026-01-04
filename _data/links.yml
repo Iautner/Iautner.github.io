@@ -16,6 +16,9 @@
 - text: Bluesky
   url: https://bsky.app/profile/lautner.co
   icon: bluesky
+- text: Threads
+  url: https://www.threads.com/@lautnergames
+  icon: threads
 - text: Twitter
   url: https://twitter.com/LautnerGames?mx=1
   icon: twitter
