@@ -1,7 +1,7 @@
 @font-face {
   font-display: block;
   font-family: "bootstrap-icons";
-  src: url("./fonts/bootstrap-icons.woff2?24e3eb84d0bcaf83d77f904c78ac1f47") format("woff2"),
+  src: url("./fonts/bootstrap-icons.woff2") format("woff2"),
 url("./fonts/bootstrap-icons.woff?24e3eb84d0bcaf83d77f904c78ac1f47") format("woff");
 }
 
@@ -1543,7 +1543,7 @@ url("./fonts/bootstrap-icons.woff?24e3eb84d0bcaf83d77f904c78ac1f47") format("wof
 .bi-usb-drive-fill::before { content: "\f6f1"; }
 .bi-usb-drive::before { content: "\f6f2"; }
 .bi-usb-micro-fill::before { content: "\f6f3"; }
-.bi-usb-micro::before { content: "\f6f4"; }
+.bi-1-circle::before { content: "\f798"; }
 .bi-usb-mini-fill::before { content: "\f6f5"; }
 .bi-usb-mini::before { content: "\f6f6"; }
 .bi-cloud-haze2::before { content: "\f6f7"; }
@@ -2016,3 +2016,6 @@ url("./fonts/bootstrap-icons.woff?24e3eb84d0bcaf83d77f904c78ac1f47") format("wof
 .bi-sina-weibo::before { content: "\f8ca"; }
 .bi-tencent-qq::before { content: "\f8cb"; }
 .bi-wikipedia::before { content: "\f8cc"; }
+/* Threads (Bootstrap Icons - codepoint U+F8D9) */
+.bi-threads::before { content: "\f8d9"; }
+
