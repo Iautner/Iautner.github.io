@@ -81,6 +81,22 @@
 </head>
 
 <body class="p-3">
+    <!-- TopBar: Linktree-style quick actions (theme toggle, native share) -->
+    <div class="fixed left-0 right-0 z-[200] w-full !font-sans transition-[transform,opacity] duration-300 ease-out sm:fixed sm:top-3" data-testid="TopBar" id="TopBar">
+        <div class="mx-auto flex max-w-profileContainer justify-between gap-x-2 px-[var(--link-gap)] py-[var(--link-gap)] text-right sm:px-[calc(var(--link-gap)*2)]">
+            <!-- Left: theme toggle -->
+            <button id="TopBarThemeToggle" class="flex h-10 items-center justify-center transition active:scale-[0.95] border border-white/40 focus:outline-none bg-white/70 text-black hover:bg-white/100 backdrop-blur-sm w-10 rounded-full" aria-label="Toggle theme">
+                <svg fill="none" height="18px" width="18px" viewBox="0 0 28 28" class="animation_rotate__SBERF" aria-hidden="true"><path d="m15.7603 6.829 4.6725-4.80317 2.712 2.77734-4.9012 4.67248h6.8944v3.85565h-6.9271l4.9339 4.7922-2.712 2.7229-6.6983-6.731-6.69829 6.731-2.712-2.712 4.93387-4.7923h-6.92703v-3.86645h6.89436l-4.9012-4.67248 2.712-2.77734 4.67249 4.80317v-6.829h4.0516zm-4.0516 12.0243h4.0516v9.1489h-4.0516z" fill="currentColor"></path></svg>
+            </button>
+
+            <!-- Right: share / actions -->
+            <div id="topbar-buttons" class="flex gap-x-2">
+                <button id="TopBarShare" class="flex h-10 items-center justify-center transition active:scale-[0.95] border border-white/40 focus:outline-none bg-white/70 text-black hover:bg-white/100 backdrop-blur-sm w-10 rounded-full" aria-label="Share profile">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M216,112v96a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V112A16,16,0,0,1,56,96H80a8,8,0,0,1,0,16H56v96H200V112H176a8,8,0,0,1,0-16h24A16,16,0,0,1,216,112ZM93.66,69.66,120,43.31V136a8,8,0,0,0,16,0V43.31l26.34,26.35a8,8,0,0,0,11.32-11.32l-40-40a8,8,0,0,0-11.32,0l-40,40A8,8,0,0,0,93.66,69.66Z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
     <main class="container-md">
         {% include profile.html %}
         {% include interests.html %}
@@ -105,6 +121,45 @@
             }
             lastTouchEnd = now;
         }, false);
+    </script>
+    <!-- TopBar behavior: theme toggle and native share -->
+    <script>
+        (function () {
+            const themeToggle = document.getElementById('TopBarThemeToggle');
+            const shareBtn = document.getElementById('TopBarShare');
+
+            function applyTheme(isDark) {
+                document.documentElement.classList.toggle('dark', isDark);
+                try { localStorage.setItem('site-theme', isDark ? 'dark' : 'light'); } catch (e) {}
+            }
+
+            // Initialize from saved preference or system
+            try {
+                const saved = localStorage.getItem('site-theme');
+                if (saved === 'dark' || saved === 'light') applyTheme(saved === 'dark');
+                else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) applyTheme(true);
+            } catch (e) {}
+
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    const isDark = document.documentElement.classList.toggle('dark');
+                    try { localStorage.setItem('site-theme', isDark ? 'dark' : 'light'); } catch (e) {}
+                });
+            }
+
+            if (shareBtn) {
+                shareBtn.addEventListener('click', async () => {
+                    const shareData = { title: document.title || 'Profile', url: location.href };
+                    if (navigator.share) {
+                        try { await navigator.share(shareData); } catch (e) { /* user cancelled */ }
+                    } else if (navigator.clipboard) {
+                        try { await navigator.clipboard.writeText(location.href); alert('Link copied'); } catch (e) { prompt('Copy link', location.href); }
+                    } else {
+                        prompt('Share this link', location.href);
+                    }
+                });
+            }
+        })();
     </script>
 </body>
 
