@@ -7,3 +7,4 @@ Dockerfile
 /.vscode
 /.history
 /node_modules
+/vendor/
